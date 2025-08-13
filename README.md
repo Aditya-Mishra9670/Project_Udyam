@@ -1,3 +1,24 @@
+## Scraper Utility
+
+The project includes a scraper script (`scrapeTarget.js`) used to extract the latest form field schema from the official Udyam registration website. This ensures your frontend and backend always use up-to-date field names and options.
+
+### Purpose
+- Scrapes the Udyam registration page for all input/select fields and their attributes.
+- Outputs a JSON schema (`udyam_form_fields.json`) used by the backend and frontend for dynamic form rendering.
+
+### How to Use
+1. Make sure you have Node.js installed.
+2. In the project root, run:
+	```bash
+	node scrapeTarget.js
+	```
+3. The script will fetch the target page, parse the form, and overwrite `udyam_form_fields.json` with the latest schema.
+4. Restart your backend server to use the updated schema.
+
+### Notes
+- The scraper is intended for development/maintenance. You do not need to run it unless the Udyam form changes.
+- Review the generated JSON before deploying to production.
+
 # Project Udyam
 
 ## Overview
