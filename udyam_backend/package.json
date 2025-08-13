@@ -2,16 +2,25 @@
   "name": "udyam_backend",
   "version": "1.0.0",
   "description": "This is the udyan clone backend which will handle incoming requests of clone udyam frontend",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node src/index.js", 
+  "dev": "nodemon src/index.js",
+  "test": "jest"
+},
+
   "author": "Aditya Mishra",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "^6.14.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "mongoose": "^8.17.1"
+    "mongoose": "^8.17.1",
+    "prisma": "^6.14.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "supertest": "^7.1.4"
   }
 }
