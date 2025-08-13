@@ -1,0 +1,82 @@
+[
+  {
+    "elementType": "input",
+    "fieldName": "__EVENTTARGET",
+    "fieldType": "hidden",
+    "id": "__EVENTTARGET",
+    "placeholder": "",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "__EVENTARGUMENT",
+    "fieldType": "hidden",
+    "id": "__EVENTARGUMENT",
+    "placeholder": "",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "__VIEWSTATE",
+    "fieldType": "hidden",
+    "id": "__VIEWSTATE",
+    "placeholder": "",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "__VIEWSTATEGENERATOR",
+    "fieldType": "hidden",
+    "id": "__VIEWSTATEGENERATOR",
+    "placeholder": "",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "__VIEWSTATEENCRYPTED",
+    "fieldType": "hidden",
+    "id": "__VIEWSTATEENCRYPTED",
+    "placeholder": "",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "__EVENTVALIDATION",
+    "fieldType": "hidden",
+    "id": "__EVENTVALIDATION",
+    "placeholder": "",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "ctl00$ContentPlaceHolder1$txtadharno",
+    "fieldType": "text",
+    "id": "ctl00_ContentPlaceHolder1_txtadharno",
+    "placeholder": "Your Aadhaar No",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "ctl00$ContentPlaceHolder1$txtownername",
+    "fieldType": "text",
+    "id": "ctl00_ContentPlaceHolder1_txtownername",
+    "placeholder": "Name as per Aadhaar",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "ctl00$ContentPlaceHolder1$chkDecarationA",
+    "fieldType": "checkbox",
+    "id": "ctl00_ContentPlaceHolder1_chkDecarationA",
+    "placeholder": "",
+    "label": ""
+  },
+  {
+    "elementType": "input",
+    "fieldName": "ctl00$ContentPlaceHolder1$btnValidateAadhaar",
+    "fieldType": "submit",
+    "id": "ctl00_ContentPlaceHolder1_btnValidateAadhaar",
+    "placeholder": "",
+    "label": ""
+  }
+]
