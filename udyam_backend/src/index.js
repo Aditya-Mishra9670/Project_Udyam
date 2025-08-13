@@ -31,7 +31,7 @@ server.get('/api/formfields', (req, res) => {
 // Endpoint: Handle form submissions
 server.post('/api/submit', async (req, res) => {
   console.log('Received form submission:', req.body);
-  const validationError = checkAadhaarAndName(req.body);
+  const validationError = checkFormData(req.body);
   if (validationError) {
     return res.status(400).json({
       status: 'error',
@@ -40,7 +40,7 @@ server.post('/api/submit', async (req, res) => {
   }
 
   try {
-    const savedEntry = await db.submission.create({
+    const savedEntry = await db.Submission.create({
       data: req.body
     });
     res.status(201).json({

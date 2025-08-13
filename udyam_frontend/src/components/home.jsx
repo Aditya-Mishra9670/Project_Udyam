@@ -15,7 +15,7 @@ const fieldLabelMap = {
   // Add more mappings as needed
 };
 
-export default function Home({ formSchema, formData, handleChange, handleSubmit, errors }) {
+export default function Home({ formSchema, formData, handleChange, handleSubmit, errors, fieldLabelMap, otpSent, otpValue, setOtpValue }) {
   return (
     <section className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-10 px-2">
       <form
@@ -28,59 +28,22 @@ export default function Home({ formSchema, formData, handleChange, handleSubmit,
         <p className="text-center text-gray-500 mb-8 text-lg">Step 1 &amp; 2</p>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {formSchema.filter(field => field.type !== "hidden" && field.type !== "submit").map((field, idx) => (
+          {formSchema.filter(field => field.type !== "hidden" && field.type !== "submit" && field.name !== "ctl00$ContentPlaceHolder1$chkDecarationP").map((field, idx) => (
             <div key={idx} className="flex flex-col gap-1 bg-blue-50/60 rounded-lg p-4 shadow-sm border border-blue-100">
               <label className="font-semibold text-blue-800 mb-1 text-sm tracking-wide">
                 {fieldLabelMap[field.name] || field.label || field.name}
                 {field.required && <span className="text-red-500 ml-1">*</span>}
               </label>
-
-              {field.tag === "select" ? (
-                <select
-                  name={field.name}
-                  className="border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-gray-700 transition"
-                  value={formData[field.name] || ""}
-                  onChange={(e) => handleChange(field.name, e.target.value)}
-                  required={field.required}
-                >
-                  <option value="">-- Select --</option>
-                  {Array.isArray(field.options) &&
-                    field.options.map((opt, i) => (
-                      <option key={i} value={opt.value || opt}>
-                        {opt.label || opt}
-                      </option>
-                    ))}
-                </select>
-              ) : field.tag === "textarea" ? (
-                <textarea
-                  name={field.name}
-                  placeholder={field.placeholder}
-                  className="border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-gray-700 transition min-h-[80px] resize-y"
-                  value={formData[field.name] || ""}
-                  onChange={(e) => handleChange(field.name, e.target.value)}
-                  required={field.required}
-                />
-              ) : field.type === "checkbox" ? (
-                <input
-                  type="checkbox"
-                  name={field.name}
-                  checked={!!formData[field.name]}
-                  onChange={(e) => handleChange(field.name, e.target.checked)}
-                  className="accent-blue-600 h-5 w-5 rounded border border-blue-200 focus:ring-2 focus:ring-blue-400"
-                  required={field.required}
-                />
-              ) : (
-                <input
-                  type={field.type}
-                  name={field.name}
-                  placeholder={field.placeholder}
-                  className="border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-gray-700 transition"
-                  value={formData[field.name] || ""}
-                  onChange={(e) => handleChange(field.name, e.target.value)}
-                  required={field.required}
-                />
-              )}
-
+              <input
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+                className="border border-blue-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-gray-700 transition"
+                value={formData[field.name] || ""}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                required={field.required}
+                disabled={otpSent && field.name === "ctl00$ContentPlaceHolder1$txtadharno"}
+              />
               {errors && errors[field.name] && (
                 <span className="text-red-500 text-xs mt-1">
                   {errors[field.name]}
@@ -90,12 +53,50 @@ export default function Home({ formSchema, formData, handleChange, handleSubmit,
           ))}
         </div>
 
-        <button
-          type="submit"
-          className="mt-10 w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold py-3 rounded-xl shadow-lg transition-all duration-200 text-lg tracking-wide uppercase"
-        >
-          Submit
-        </button>
+        {/* PAN Declaration checkbox highlighted above submit button */}
+        {formSchema.some(field => field.name === "ctl00$ContentPlaceHolder1$chkDecarationP") && (
+          <div className="flex items-center justify-center my-6">
+            <label className="flex items-center bg-yellow-100 border-2 border-yellow-400 rounded-lg px-4 py-3 shadow font-semibold text-yellow-800 text-base">
+              <input
+                type="checkbox"
+                name="ctl00$ContentPlaceHolder1$chkDecarationP"
+                className="mr-3 w-5 h-5 accent-yellow-500"
+                checked={!!formData["ctl00$ContentPlaceHolder1$chkDecarationP"]}
+                onChange={e => handleChange("ctl00$ContentPlaceHolder1$chkDecarationP", e.target.checked)}
+                required={formSchema.find(f => f.name === "ctl00$ContentPlaceHolder1$chkDecarationP")?.required}
+              />
+              {fieldLabelMap["ctl00$ContentPlaceHolder1$chkDecarationP"] || "PAN Declaration"}
+              {errors && errors["ctl00$ContentPlaceHolder1$chkDecarationP"] && (
+                <span className="text-red-500 text-xs ml-2">{errors["ctl00$ContentPlaceHolder1$chkDecarationP"]}</span>
+              )}
+            </label>
+          </div>
+        )}
+
+        {/* OTP input for Step 2 */}
+        {otpSent && typeof otpValue !== 'undefined' && typeof setOtpValue === 'function' && (
+          <div className="mt-6 flex flex-col md:flex-row items-center gap-4">
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              className="border border-blue-200 rounded-lg px-3 py-2"
+              value={otpValue}
+              onChange={(e) => setOtpValue(e.target.value)}
+              required
+            />
+            <button type="submit" className="bg-green-600 text-white px-6 py-2 rounded">Submit OTP</button>
+            {errors && errors.otp && <span className="text-red-500 text-xs mt-1">{errors.otp}</span>}
+          </div>
+        )}
+
+        {!otpSent && (
+          <button
+            type="submit"
+            className="mt-10 w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold py-3 rounded-xl shadow-lg transition-all duration-200 text-lg tracking-wide uppercase"
+          >
+            Submit
+          </button>
+        )}
       </form>
     </section>
 

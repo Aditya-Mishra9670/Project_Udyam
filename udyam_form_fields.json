@@ -1,82 +1,174 @@
 [
   {
-    "elementType": "input",
-    "fieldName": "__EVENTTARGET",
-    "fieldType": "hidden",
+    "tag": "input",
+    "name": "__EVENTTARGET",
+    "type": "hidden",
     "id": "__EVENTTARGET",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
   },
   {
-    "elementType": "input",
-    "fieldName": "__EVENTARGUMENT",
-    "fieldType": "hidden",
+    "tag": "input",
+    "name": "__EVENTARGUMENT",
+    "type": "hidden",
     "id": "__EVENTARGUMENT",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
   },
   {
-    "elementType": "input",
-    "fieldName": "__VIEWSTATE",
-    "fieldType": "hidden",
+    "tag": "input",
+    "name": "__VIEWSTATE",
+    "type": "hidden",
     "id": "__VIEWSTATE",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
   },
   {
-    "elementType": "input",
-    "fieldName": "__VIEWSTATEGENERATOR",
-    "fieldType": "hidden",
+    "tag": "input",
+    "name": "__VIEWSTATEGENERATOR",
+    "type": "hidden",
     "id": "__VIEWSTATEGENERATOR",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
   },
   {
-    "elementType": "input",
-    "fieldName": "__VIEWSTATEENCRYPTED",
-    "fieldType": "hidden",
+    "tag": "input",
+    "name": "__VIEWSTATEENCRYPTED",
+    "type": "hidden",
     "id": "__VIEWSTATEENCRYPTED",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
   },
   {
-    "elementType": "input",
-    "fieldName": "__EVENTVALIDATION",
-    "fieldType": "hidden",
+    "tag": "input",
+    "name": "__EVENTVALIDATION",
+    "type": "hidden",
     "id": "__EVENTVALIDATION",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
   },
   {
-    "elementType": "input",
-    "fieldName": "ctl00$ContentPlaceHolder1$txtadharno",
-    "fieldType": "text",
+    "tag": "select",
+    "name": "cmbMoreFunction",
+    "type": "text",
+    "id": "cmbMoreFunction",
+    "label": "",
+    "placeholder": ""
+  },
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$txtadharno",
+    "type": "text",
     "id": "ctl00_ContentPlaceHolder1_txtadharno",
-    "placeholder": "Your Aadhaar No",
-    "label": ""
+    "label": "",
+    "placeholder": "Your Aadhaar No"
   },
   {
-    "elementType": "input",
-    "fieldName": "ctl00$ContentPlaceHolder1$txtownername",
-    "fieldType": "text",
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$txtownername",
+    "type": "text",
     "id": "ctl00_ContentPlaceHolder1_txtownername",
-    "placeholder": "Name as per Aadhaar",
-    "label": ""
+    "label": "",
+    "placeholder": "Name as per Aadhaar"
   },
   {
-    "elementType": "input",
-    "fieldName": "ctl00$ContentPlaceHolder1$chkDecarationA",
-    "fieldType": "checkbox",
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$chkDecarationA",
+    "type": "checkbox",
     "id": "ctl00_ContentPlaceHolder1_chkDecarationA",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
   },
   {
-    "elementType": "input",
-    "fieldName": "ctl00$ContentPlaceHolder1$btnValidateAadhaar",
-    "fieldType": "submit",
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$btnValidateAadhaar",
+    "type": "submit",
     "id": "ctl00_ContentPlaceHolder1_btnValidateAadhaar",
-    "placeholder": "",
-    "label": ""
+    "label": "",
+    "placeholder": ""
+  }
+  ,
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$txtPan",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_txtPan",
+    "label": "PAN Number",
+    "placeholder": "ABCDE1234F"
+  },
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$txtPanName",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_txtPanName",
+    "label": "Name as per PAN",
+    "placeholder": "Full Name"
+  },
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$txtdob",
+    "type": "date",
+    "id": "ctl00_ContentPlaceHolder1_txtdob",
+    "label": "Date of Birth",
+    "placeholder": "YYYY-MM-DD"
+  },
+  {
+    "tag": "select",
+    "name": "ctl00$ContentPlaceHolder1$ddlTypeofOrg",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_ddlTypeofOrg",
+    "label": "Type of Organisation",
+    "placeholder": "Select Organisation Type",
+    "options": ["Proprietorship", "Partnership", "Private Limited", "LLP", "Other"]
+  },
+  {
+    "tag": "select",
+    "name": "ctl00$ContentPlaceHolder1$rbpanyesno",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_rbpanyesno",
+    "label": "Do you have PAN?",
+    "placeholder": "Select Yes/No",
+    "options": ["Yes", "No"]
+  },
+  {
+    "tag": "select",
+    "name": "ctl00$ContentPlaceHolder1$rbdDOB",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_rbdDOB",
+    "label": "DOB Type",
+    "placeholder": "Select DOB Type",
+    "options": ["DOB as per PAN", "DOB as per Aadhaar"]
+  },
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$chkDecarationP",
+    "type": "checkbox",
+    "id": "ctl00_ContentPlaceHolder1_chkDecarationP",
+    "label": "PAN Declaration",
+    "placeholder": ""
+  },
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$pin",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_pin",
+    "label": "PIN Code",
+    "placeholder": "560078"
+  },
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$city",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_city",
+    "label": "City",
+    "placeholder": "City Name"
+  },
+  {
+    "tag": "input",
+    "name": "ctl00$ContentPlaceHolder1$state",
+    "type": "text",
+    "id": "ctl00_ContentPlaceHolder1_state",
+    "label": "State",
+    "placeholder": "State Name"
   }
 ]
