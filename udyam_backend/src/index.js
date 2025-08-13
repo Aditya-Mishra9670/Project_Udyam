@@ -15,6 +15,10 @@ const db = new PrismaClient();
 server.use(cors(corsOptions));
 server.use(express.json());
 
+//Just to keep the server alive
+server.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 // GET: Send Form_data.json to frontend
 server.get('/api/formfields', (req, res) => {
