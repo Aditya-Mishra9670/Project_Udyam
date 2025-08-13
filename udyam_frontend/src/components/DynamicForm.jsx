@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 import Home from "./home.jsx"
 // Mapping technical field names to user-friendly labels
 const fieldLabelMap = {
@@ -21,6 +22,7 @@ export default function DynamicUdyamForm() {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(true);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   // Validation patterns
   const patterns = {
@@ -29,8 +31,22 @@ export default function DynamicUdyamForm() {
   };
 
   // Fetch form schema from backend
+  // Helper to reset form to initial state
+  const resetForm = (schema) => {
+    const initialData = {};
+    schema.forEach((field) => {
+      if (field.type === "checkbox") initialData[field.name] = false;
+      else initialData[field.name] = "";
+    });
+    setFormData(initialData);
+    setErrors({});
+    setStep(1);
+    setOtpSent(false);
+    setOtpValue("");
+  };
+
   useEffect(() => {
-  fetch("http://localhost:5000/api/formfields", {
+    fetch(`${apiUrl}/api/formfields`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -39,9 +55,7 @@ export default function DynamicUdyamForm() {
         return res.json();
       })
       .then((data) => {
-        // Map backend keys to expected keys for rendering
         const mapped = data.map((field) => {
-          // Map elementType/fieldType to tag/type
           let tag = "input";
           let type = field.fieldType || "text";
           if (field.elementType === "input") {
@@ -63,13 +77,7 @@ export default function DynamicUdyamForm() {
           };
         });
         setFormSchema(mapped);
-        // Initialize formData with empty values for each field
-        const initialData = {};
-        mapped.forEach((field) => {
-          if (field.type === "checkbox") initialData[field.name] = false;
-          else initialData[field.name] = "";
-        });
-        setFormData(initialData);
+        resetForm(mapped);
         setLoading(false);
       })
       .catch((err) => {
@@ -209,15 +217,16 @@ export default function DynamicUdyamForm() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/submit", {
+      const res = await fetch(`${apiUrl}/api/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
       const result = await res.json();
       if (res.ok) {
-        alert("Form submitted and saved to database!");
-        // Optionally reset form or go to a success page
+        setShowSuccess(true);
+        resetForm(formSchema);
+        setTimeout(() => setShowSuccess(false), 2500);
       } else {
         alert(result.message || "Submission failed. Please check your data.");
       }
@@ -230,6 +239,21 @@ export default function DynamicUdyamForm() {
     return (
       <div className="flex justify-center items-center h-40">
         <span className="text-lg font-semibold text-blue-600 animate-pulse">Loading form...</span>
+      </div>
+    );
+  }
+
+  // Success popup
+  if (showSuccess) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
+        <div className="bg-white rounded-2xl shadow-2xl px-12 py-10 border-2 border-green-400 flex flex-col items-center">
+          <svg className="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <h2 className="text-2xl font-bold text-green-700 mb-2">Success!</h2>
+          <p className="text-green-600 text-lg">Form submitted and saved to database.</p>
+        </div>
       </div>
     );
   }

@@ -4,11 +4,12 @@
   "description": "This is the udyan clone backend which will handle incoming requests of clone udyam frontend",
   "main": "src/index.js",
   "scripts": {
-  "start": "node src/index.js", 
-  "dev": "nodemon src/index.js",
-  "test": "jest"
-},
-
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy"
+  },
   "author": "Aditya Mishra",
   "license": "MIT",
   "dependencies": {

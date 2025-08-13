@@ -4,12 +4,15 @@ const path = require('path');
 
 const { PrismaClient } = require('@prisma/client');
 const { checkFormData, checkAadhaarAndName } = require('./validation');
-
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*', // Set your deployed frontend URL
+  credentials: true,
+};
 const server = express();
 const db = new PrismaClient();
 
 // Middleware
-server.use(cors());
+server.use(cors(corsOptions));
 server.use(express.json());
 
 
