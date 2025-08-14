@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app/udyam_backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./udyam_backend:/app/udyam_backend
+      - ./udyam_backend/prisma:/app/udyam_backend/prisma
+    environment:
+      - NODE_ENV=production
+    command: npm start
+  frontend:
+    image: node:20-alpine
+    working_dir: /app/udyam_frontend
+    volumes:
+      - ./udyam_frontend:/app/udyam_frontend
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend

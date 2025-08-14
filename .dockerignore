@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+dist
+build
+.env
+# Docker
+Dockerfile
+docker-compose.yml
+# Prisma
+udyam_backend/prisma/dev.db
+udyam_backend/prisma/dev.db-journal
