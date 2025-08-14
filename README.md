@@ -1,3 +1,7 @@
+## Project Deployed Live Link
+
+[https://project-udyam.vercel.app/](https://project-udyam.vercel.app/)
+
 ## Scraper Utility
 
 The project includes a scraper script (`scrapeTarget.js`) used to extract the latest form field schema from the official Udyam registration website. This ensures your frontend and backend always use up-to-date field names and options.
@@ -130,6 +134,22 @@ npm run build
 ```
 
 ---
+## Using Docker
+
+Project Udyam can be run entirely using Docker Compose. All dependencies and setups are included in the Dockerfiles.
+
+### Commands
+
+```bash
+# Build the Docker images for backend and frontend
+docker-compose build
+
+# Start both backend and frontend containers
+docker-compose up
+
+# Stop and remove the containers
+docker-compose down
+```
 
 ## Full Flow Tutorial
 

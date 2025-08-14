@@ -9,6 +9,10 @@ COPY udyam_backend/package*.json ./udyam_backend/
 COPY udyam_backend/prisma ./udyam_backend/prisma
 COPY udyam_backend/src ./udyam_backend/src
 
+# Copy the JSON file to the container
+COPY udyam_form_fields.json ./udyam_form_fields.json
+# Copy .env file
+COPY udyam_backend/.env ./udyam_backend/.env
 # Install backend dependencies
 WORKDIR /app/udyam_backend
 RUN npm install

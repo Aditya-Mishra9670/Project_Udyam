@@ -6,13 +6,14 @@ services:
       dockerfile: Dockerfile
     working_dir: /app/udyam_backend
     ports:
-      - "3000:3000"
+      - "5000:5000"
     volumes:
       - ./udyam_backend:/app/udyam_backend
       - ./udyam_backend/prisma:/app/udyam_backend/prisma
     environment:
       - NODE_ENV=production
     command: npm start
+
   frontend:
     image: node:20-alpine
     working_dir: /app/udyam_frontend
@@ -23,5 +24,6 @@ services:
       - "5173:5173"
     environment:
       - NODE_ENV=development
+      - VITE_API_URL=http://localhost:5000
     depends_on:
       - backend
